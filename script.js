@@ -111,7 +111,7 @@ function renderjobs(){
 
        rendardJob.forEach(job => {
      
-
+        
      // badge 
 
     let badgeClass = 'status py-4 px-6 font-bold text-black bg-gray-100 rounded-2xl';
@@ -192,60 +192,7 @@ function deleteJob (id){
 }
 
 
-// // all tab
-//   document.getElementById('all-filter-btn').addEventListener('click', function(){
-//     renderjobs();
-//   })
 
-
-// // interview tab
-
-//  document.getElementById('interview-filter-btn').addEventListener('click', function(){
-//     function inner(){
-//       jobContainer.innerHTML = '';
-//   jobContainer.innerHTML = `<section class="text-center flex flex-col gap-4 justify-center items-center py-48">
-//         <img src="assets/jobs.png" alt="">
-//         <h1 class="text-[#002C5C] text-3xl font-bold">No jobs available</h1>
-//         <p class="text-gray-600">Check back soon for new job opportunities</p>
-//       </section>`;
-//     }
-
-  // const interviewJobs = jobs.filter(job => job.status === 'interview');
-  // if (interviewJobs.length !== 0){
-  //   jobContainer.innerHTML = '';
-  //   renderjobs(interviewJobs)
-  // } else if(interviewJobs.length === 0){
-  //   inner()
-  // }
-  
-  
-  
-
-
-
-//  // rejected tab
-
-//  document.getElementById('rejected-filter-btn').addEventListener('click', function(){
-//     function inner(){
-//       jobContainer.innerHTML = '';
-//   jobContainer.innerHTML = `<section class="text-center flex flex-col gap-4 justify-center items-center py-48">
-//         <img src="assets/jobs.png" alt="">
-//         <h1 class="text-[#002C5C] text-3xl font-bold">No jobs available</h1>
-//         <p class="text-gray-600">Check back soon for new job opportunities</p>
-//       </section>`;
-//     }
-
-//   const rejectedJobs = jobs.filter(job => job.status === 'rejected');
-//   if (rejectedJobs.length !== 0){
-//     jobContainer.innerHTML = '';
-//     renderjobs(rejectedJobs)
-//   } else if(rejectedJobs.length === 0){
-//     inner()
-//   }
-  
-  
-  
-//  })
 
 // filter button function
 const filterBtn = document.querySelectorAll('.filter-btn');
@@ -268,13 +215,16 @@ for (const button of filterBtn){
     event.target.classList.remove('bg-gray-300', 'text-black')
     event.target.classList.add('bg-blue-500', 'text-white')
 
-    // const sections = document.querySelectorAll('#main-section .section');
-    // sections.forEach(section => section.classList.add('hidden'));
-
-    // document.getElementById(event.target.dataset.target).classList.remove('hidden')
+    if (event.target.id === 'all-filter-btn'){
+      currentFilter = 'all';
+    } else if(event.target.id === 'interview-filter-btn'){
+      currentFilter = 'interview'
+    } else if(event.target.id === 'rejected-filter-btn'){
+      currentFilter = 'rejected';
+    }
 
     
-   
+   renderjobs()
     
   })}
 
@@ -283,4 +233,3 @@ renderjobs()
 updetCounters()
 
 
-// console.log(jobs)
