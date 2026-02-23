@@ -10,58 +10,58 @@ const jobs = [
   {
     id: 2, 
     companyName: 'WebFlow Agency', 
-    position: 'React Native Developer', 
-    detiles: `Remote • Full-time • $130,000 - $175,000`, 
+    position: 'Web Designer & Developer', 
+    detiles: `Los Angeles, CA • Part-time • $80,000 - $120,000`, 
     status: 'Not Applied',
-    description: 'Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.',
+    description: 'Create stunning web experiences for high-profile clients. Must have portfolio and experience with modern web design trends.',
   }, 
   {
     id: 3, 
     companyName: 'DataViz Solutions', 
-    position: 'React Native Developer', 
-    detiles: `Remote • Full-time • $130,000 - $175,000`, 
+    position: 'Data Visualization Specialist', 
+    detiles: `Boston, MA • Full-time • $125,000 - $165,000`, 
     status: 'Not Applied',
-    description: 'Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.',
+    description: 'Transform complex data into compelling visualizations. Required skills: D3.js, React, and strong analytical thinking.',
   },
   {
     id: 4, 
     companyName: 'CloudFirst Inc', 
-    position: 'React Native Developer', 
-    detiles: `Remote • Full-time • $130,000 - $175,000`, 
+    position: 'Backend Developer', 
+    detiles: `Seattle, WA • Full-time • $140,000 - $190,000`, 
     status: 'Not Applied',
-    description: 'Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.',
+    description: 'Design and maintain scalable backend systems using Python and AWS. Work with modern DevOps practices and cloud infrastructure.',
   },
   {
     id: 5, 
     companyName: 'Innovation Labs', 
-    position: 'React Native Developer', 
-    detiles: `Remote • Full-time • $130,000 - $175,000`, 
+    position: 'UI/UX Engineer', 
+    detiles: `Austin, TX • Full-time • $110,000 - $150,000`, 
     status: 'Not Applied',
-    description: 'Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.',
+    description: 'Create beautiful and functional user interfaces for our suite of products. Strong design skills and frontend development expertise required.',
   },
   {
     id: 6, 
     companyName: 'MegaCorp Solutions', 
-    position: 'React Native Developer', 
-    detiles: `Remote • Full-time • $130,000 - $175,000`, 
+    position: 'JavaScript Developer', 
+    detiles: `New York, NY • Full-time • $130,000 - $170,00`, 
     status: 'Not Applied',
-    description: 'Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.',
+    description: 'Build enterprise applications with JavaScript and modern frameworks. We offer competitive compensation, health insurance, and professional development opportunities.',
   },
   {
     id: 7, 
     companyName: 'StartupXYZ', 
-    position: 'React Native Developer', 
-    detiles: `Remote • Full-time • $130,000 - $175,000`, 
+    position: 'Full Stack Engineer', 
+    detiles: `Remote • Full-time • $120,000 - $160,000`, 
     status: 'Not Applied',
-    description: 'Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.',
+    description: 'Join our fast-growing startup and work on our core platform. Experience with Node.js and React required. Great benefits and equity package included.',
   },
   {
     id: 8, 
     companyName: 'TechCorp Industries', 
-    position: 'React Native Developer', 
-    detiles: `Remote • Full-time • $130,000 - $175,000`, 
+    position: 'Senior Frontend Developer', 
+    detiles: `San Francisco, CA • Full-time • $130,000 - $175,000`, 
     status: 'Not Applied',
-    description: 'Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.',
+    description: 'We are looking for an experienced Frontend Developer to build scalable web applications using React and TypeScript. You will work with a talented team on cutting-edge projects.',
   }
 ];
 
@@ -149,7 +149,7 @@ function renderjobs(){
           <p class="descripton text-xl text-gray-500 my-4">${job.description}</p>
 
           <button class="status-interview py-4 px-4 font-bold text-green-400 border border-green-400 rounded-lg cursor-pointer" onclick="updetStatus(${job.id}, 'interview')">Interview</button>
-          <button class="status-rejected py-4 px-4 font-bold text-red-400 border border-red-400 rounded-lg cursor-pointer ml-4" onclick="updetStatus(${job.id}, 'rejected')">Rejected</button>
+          <button class="status-rejected py-4 px-4 font-bold text-red-400 border border-red-400 rounded-lg cursor-pointer lg:ml-4" onclick="updetStatus(${job.id}, 'rejected')">Rejected</button>
           </div>
 
           <!-- left side -->
