@@ -34,19 +34,40 @@
        </section>
   </header>
  
-  <main class="w-[80%] mx-auto">
+  <main id="main-section" class="w-[80%] mx-auto">
    
+     <!-- availavle jobs  -->
+      <div id="availavle-jobs" class="text-[#002C5C] text-2xl font-bold mt-10 flex justify-between">
+        <p>Availavle Jobs</p>
+        <p id="availavle-jobs-counter">0</p>
+      </div>
 
      <!-- filter btn -->
       <div class="mt-6 ">
         <button id="all-filter-btn" class="filter-btn py-4 px-6  font-bold text-white bg-blue-500 rounded-2xl cursor-pointer" data-target="job-container">ALL</button>
+
         <button id="interview-filter-btn" class="filter-btn py-4 px-6  font-bold text-black bg-gray-300 rounded-2xl cursor-pointer" data-target="interview-section">Interview</button>
+
         <button id="rejected-filter-btn" class="filter-btn py-4 px-6  font-bold text-black bg-gray-300 rounded-2xl cursor-pointer" data-target="rejected-section">Rejected</button>
       </div>
 
     
 
+      <section id="job-container" class="section space-y-4 mt-10">
+          
+      </section>
 
+      <section id="interview-section" class="section text-center flex flex-col gap-4 justify-center items-center py-48 hidden">
+        <img src="assets/jobs.png" alt="">
+        <h1 class="text-[#002C5C] text-3xl font-bold">No jobs available</h1>
+        <p class="text-gray-600">Check back soon for new job opportunities</p>
+      </section>
 
+      <section id="rejected-section" class="section text-center flex flex-col gap-4 justify-center items-center py-48 hidden">
+        <img src="assets/jobs.png" alt="">
+        <h1 class="text-[#002C5C] text-3xl font-bold">No jobs available</h1>
+        <p class="text-gray-600">Check back soon for new job opportunities</p>
+      </section>
+<script src="script.js"></script>
 </body>
 </html>
