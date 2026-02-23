@@ -12,7 +12,7 @@ const jobs = [
     companyName: 'WebFlow Agency', 
     position: 'React Native Developer', 
     detiles: `Remote • Full-time • $130,000 - $175,000`, 
-    status: 'interview',
+    status: 'Not Applied',
     description: 'Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.',
   }, 
   {
@@ -20,7 +20,7 @@ const jobs = [
     companyName: 'DataViz Solutions', 
     position: 'React Native Developer', 
     detiles: `Remote • Full-time • $130,000 - $175,000`, 
-    status: 'rejected',
+    status: 'Not Applied',
     description: 'Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.',
   },
   {
@@ -64,6 +64,8 @@ const jobs = [
     description: 'Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.',
   }
 ];
+
+// counter function
 function updetCounters(){
 const jobCount = jobs.length;
 const interviweCount = jobs.filter(job => job.status === 'interview').length;
@@ -76,12 +78,16 @@ document.getElementById('rejected-jobs').innerText = rejectedCount;
 }
 
 
-let filteredJob = jobs;
+// job creating function
 
-function renderjobs(){
+document.getElementById('all-filter-btn').addEventListener('click', renderjobs(jobs))
+
+function renderjobs(arr){
+ 
    const jobContainer = document.getElementById('job-container');
    jobContainer.innerHTML = '';
-  filteredJob.forEach(job => {
+    arr.forEach(job => {
+     
 
      // badge 
 
@@ -131,12 +137,13 @@ function renderjobs(){
   })
 }
 
+// updet status function
  function updetStatusInterView(id){
       const job = jobs.find(job => job.id === id);
       if(job.status === 'Not Applied' || job.status === 'rejected'){
         job.status = 'interview'
-      } 
-      renderjobs();
+      } ;
+      renderjobs(jobs);
       updetCounters();
     };
 
@@ -146,7 +153,7 @@ function updetStatusRejected(id){
       if(job.status === 'Not Applied' || job.status === 'interview'){
         job.status = 'rejected'
       } 
-      renderjobs();
+      renderjobs(jobs);
       updetCounters();
 };
 
@@ -157,11 +164,16 @@ function deleteJob (id){
         jobs.splice(index, 1);
       }
       filteredJob = jobs;
-      renderjobs();
+      renderjobs(jobs);
       updetCounters();
       
 }
-   
+  
+
+function interviewJobs(){
+  const interviewSection = document.getElementById('interview-section');
+  interviewSection.innerHTML = ''
+}
 const filterBtn = document.querySelectorAll('.filter-btn');
 
 
@@ -193,7 +205,7 @@ for (const button of filterBtn){
   })}
 
 
-renderjobs()
+renderjobs(jobs)
 updetCounters()
 
 
