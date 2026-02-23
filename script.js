@@ -82,6 +82,8 @@ document.getElementById('rejected-jobs').innerText = rejectedCount;
 
 const jobContainer = document.getElementById('job-container');
 let currentFilter = 'all';
+let availableJobCounter = document.getElementById('availavle-jobs-counter');
+
 
 
 
@@ -90,10 +92,13 @@ function renderjobs(){
 
     if(currentFilter === 'all'){
       rendardJob = jobs;
+      availableJobCounter.innerText = rendardJob.length;
     } else if(currentFilter === 'interview'){
-      rendardJob = jobs.filter(job => job.status === 'interview')
+      rendardJob = jobs.filter(job => job.status === 'interview');
+      availableJobCounter.innerText = rendardJob.length;
     } else if(currentFilter === 'rejected'){
-      rendardJob = jobs.filter(job => job.status === 'rejected')
+      rendardJob = jobs.filter(job => job.status === 'rejected');
+      availableJobCounter.innerText = rendardJob.length;
     }
 
 
@@ -156,7 +161,8 @@ function renderjobs(){
     jobContainer.appendChild(jobCard);
 
    
-    updetCounters()
+    updetCounters();
+
   })
     
 
@@ -231,5 +237,6 @@ for (const button of filterBtn){
 
 renderjobs()
 updetCounters()
+
 
 
