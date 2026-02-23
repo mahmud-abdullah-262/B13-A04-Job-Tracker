@@ -80,13 +80,36 @@ document.getElementById('rejected-jobs').innerText = rejectedCount;
 
 // job creating function
 
-document.getElementById('all-filter-btn').addEventListener('click', renderjobs(jobs))
+const jobContainer = document.getElementById('job-container');
+let currentFilter = 'all';
 
-function renderjobs(arr){
- 
-   const jobContainer = document.getElementById('job-container');
-   jobContainer.innerHTML = '';
-    arr.forEach(job => {
+
+
+function renderjobs(){
+    let rendardJob = [];
+
+    if(currentFilter === 'all'){
+      rendardJob = jobs;
+    } else if(currentFilter === 'interview'){
+      rendardJob = jobs.filter(job => job.status === 'interview')
+    } else if(currentFilter === 'rejected'){
+      rendardJob = jobs.filter(job => job.status === 'rejected')
+    }
+
+
+    jobContainer.innerHTML = '';
+
+    if(rendardJob.length === 0){
+    
+    jobContainer.innerHTML = `<section class="text-center flex flex-col gap-4 justify-center items-center py-48">
+        <img src="assets/jobs.png" alt="">
+        <h1 class="text-[#002C5C] text-3xl font-bold">No jobs available</h1>
+        <p class="text-gray-600">Check back soon for new job opportunities</p>
+        </section>`
+        return;
+    } 
+
+       rendardJob.forEach(job => {
      
 
      // badge 
@@ -120,8 +143,8 @@ function renderjobs(arr){
           <button class="${badgeClass}">${badgeText}</button>
           <p class="descripton text-xl text-gray-500 my-4">${job.description}</p>
 
-          <button class="status-interview py-4 px-4 font-bold text-green-400 border border-green-400 rounded-lg cursor-pointer" onclick="updetStatusInterView(${job.id})">Interview</button>
-          <button class="status-rejected py-4 px-4 font-bold text-red-400 border border-red-400 rounded-lg cursor-pointer ml-4" onclick="updetStatusRejected(${job.id})">Rejected</button>
+          <button class="status-interview py-4 px-4 font-bold text-green-400 border border-green-400 rounded-lg cursor-pointer" onclick="updetStatus(${job.id}, 'interview')">Interview</button>
+          <button class="status-rejected py-4 px-4 font-bold text-red-400 border border-red-400 rounded-lg cursor-pointer ml-4" onclick="updetStatus(${job.id}, 'rejected')">Rejected</button>
           </div>
 
           <!-- left side -->
@@ -133,30 +156,29 @@ function renderjobs(arr){
     jobContainer.appendChild(jobCard);
 
    
-
+    updetCounters()
   })
+    
+
+
+
+
+  
+   
+   
 }
 
 // updet status function
- function updetStatusInterView(id){
+ function updetStatus(id, newStatus){
       const job = jobs.find(job => job.id === id);
-      if(job.status === 'Not Applied' || job.status === 'rejected'){
-        job.status = 'interview'
-      } ;
-      renderjobs(jobs);
+     job.status = newStatus;
+      renderjobs();
       updetCounters();
     };
 
-function updetStatusRejected(id){
-  const job = jobs.find(job => job.id === id);
-  console.log(job)
-      if(job.status === 'Not Applied' || job.status === 'interview'){
-        job.status = 'rejected'
-      } 
-      renderjobs(jobs);
-      updetCounters();
-};
 
+
+// delete function
 function deleteJob (id){
       const index = jobs.findIndex(job => job.id === id);
 
@@ -164,16 +186,68 @@ function deleteJob (id){
         jobs.splice(index, 1);
       }
       filteredJob = jobs;
-      renderjobs(jobs);
+      renderjobs();
       updetCounters();
       
 }
+
+
+// // all tab
+//   document.getElementById('all-filter-btn').addEventListener('click', function(){
+//     renderjobs();
+//   })
+
+
+// // interview tab
+
+//  document.getElementById('interview-filter-btn').addEventListener('click', function(){
+//     function inner(){
+//       jobContainer.innerHTML = '';
+//   jobContainer.innerHTML = `<section class="text-center flex flex-col gap-4 justify-center items-center py-48">
+//         <img src="assets/jobs.png" alt="">
+//         <h1 class="text-[#002C5C] text-3xl font-bold">No jobs available</h1>
+//         <p class="text-gray-600">Check back soon for new job opportunities</p>
+//       </section>`;
+//     }
+
+  // const interviewJobs = jobs.filter(job => job.status === 'interview');
+  // if (interviewJobs.length !== 0){
+  //   jobContainer.innerHTML = '';
+  //   renderjobs(interviewJobs)
+  // } else if(interviewJobs.length === 0){
+  //   inner()
+  // }
+  
+  
   
 
-function interviewJobs(){
-  const interviewSection = document.getElementById('interview-section');
-  interviewSection.innerHTML = ''
-}
+
+
+//  // rejected tab
+
+//  document.getElementById('rejected-filter-btn').addEventListener('click', function(){
+//     function inner(){
+//       jobContainer.innerHTML = '';
+//   jobContainer.innerHTML = `<section class="text-center flex flex-col gap-4 justify-center items-center py-48">
+//         <img src="assets/jobs.png" alt="">
+//         <h1 class="text-[#002C5C] text-3xl font-bold">No jobs available</h1>
+//         <p class="text-gray-600">Check back soon for new job opportunities</p>
+//       </section>`;
+//     }
+
+//   const rejectedJobs = jobs.filter(job => job.status === 'rejected');
+//   if (rejectedJobs.length !== 0){
+//     jobContainer.innerHTML = '';
+//     renderjobs(rejectedJobs)
+//   } else if(rejectedJobs.length === 0){
+//     inner()
+//   }
+  
+  
+  
+//  })
+
+// filter button function
 const filterBtn = document.querySelectorAll('.filter-btn');
 
 
@@ -194,10 +268,10 @@ for (const button of filterBtn){
     event.target.classList.remove('bg-gray-300', 'text-black')
     event.target.classList.add('bg-blue-500', 'text-white')
 
-    const sections = document.querySelectorAll('#main-section .section');
-    sections.forEach(section => section.classList.add('hidden'));
+    // const sections = document.querySelectorAll('#main-section .section');
+    // sections.forEach(section => section.classList.add('hidden'));
 
-    document.getElementById(event.target.dataset.target).classList.remove('hidden')
+    // document.getElementById(event.target.dataset.target).classList.remove('hidden')
 
     
    
@@ -205,7 +279,7 @@ for (const button of filterBtn){
   })}
 
 
-renderjobs(jobs)
+renderjobs()
 updetCounters()
 
 
