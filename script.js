@@ -1,3 +1,5 @@
+// main array
+
 const jobs = [
   {
     id: 1, 
@@ -83,9 +85,6 @@ document.getElementById('rejected-jobs').innerText = rejectedCount;
 const jobContainer = document.getElementById('job-container');
 let currentFilter = 'all';
 let availableJobCounter = document.getElementById('availavle-jobs-counter');
-
-
-
 
 function renderjobs(){
     let rendardJob = [];
